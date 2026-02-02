@@ -16,9 +16,7 @@
         .section-hide { display: none; }
     </style>
 </head>
-<body>
-
-    <nav class="bg-[#0F172A] text-white py-4 px-6 sticky top-0 z-[100] border-b border-white/10">
+<body class="pb-20 md:pb-0"> <nav class="bg-[#0F172A] text-white py-4 px-6 sticky top-0 z-[100] border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="cursor-pointer" onclick="showSection('hero')">
                 <p class="text-2xl font-black italic tracking-tighter uppercase leading-none">Ezee<span class="text-teal-400">Clap</span></p>
@@ -29,16 +27,17 @@
                 <button onclick="showSection('services')" class="bg-teal-500 text-navy px-4 py-2 rounded-full">Book Service</button>
                 <button onclick="showSection('partner')" class="border border-white/20 px-4 py-2 rounded-full">Join as Partner</button>
             </div>
+            <button onclick="showSection('partner')" class="md:hidden text-[10px] font-black uppercase text-teal-400 border border-teal-400/30 px-3 py-1 rounded-lg">Join as Partner</button>
         </div>
     </nav>
 
     <section id="sec-hero">
-        <div class="bg-[#0F172A] text-white pt-20 pb-32 px-6">
+        <div class="bg-[#0F172A] text-white pt-12 pb-24 md:pt-20 md:pb-32 px-6">
             <div class="max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-12">
                 <div>
-                    <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">Expert Help <br><span class="text-teal-400">Arrives</span> in a Clap.</h1>
+                    <h1 class="text-4xl md:text-7xl font-black mb-6 leading-tight">Expert Help <br><span class="text-teal-400">Arrives</span> in a Clap.</h1>
                     <p class="text-slate-400 text-lg mb-10 max-w-md italic">140+ Home Services & Professional Drivers. Serving every corner of Haldwani.</p>
-                    <button onclick="showSection('services')" class="bg-teal-500 text-navy px-10 py-5 rounded-2xl font-black uppercase tracking-widest shadow-2xl shadow-teal-500/20">Get Started</button>
+                    <button onclick="showSection('services')" class="w-full md:w-auto bg-teal-500 text-navy px-10 py-5 rounded-2xl font-black uppercase tracking-widest shadow-2xl shadow-teal-500/20">Get Started</button>
                 </div>
                 <div class="hidden md:flex justify-center">
                     <div class="w-80 h-80 bg-teal-400/10 rounded-[3rem] border border-teal-400/20 flex items-center justify-center text-8xl">🏠</div>
@@ -49,16 +48,13 @@
 
     <section id="sec-services" class="section-hide bg-slate-50 py-12">
         <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-8">
-            
             <div class="lg:col-span-8 space-y-6" id="selection-view">
                 <div class="flex flex-wrap gap-2 bg-white p-2 rounded-3xl shadow-sm border border-slate-200">
                     <button onclick="setCategory('Electrician')" id="cat-Electrician" class="cat-btn flex-1 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all">Electrician</button>
                     <button onclick="setCategory('Plumber')" id="cat-Plumber" class="cat-btn flex-1 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all">Plumber</button>
                     <button onclick="setCategory('Driver')" id="cat-Driver" class="cat-btn flex-1 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all">Driver</button>
                 </div>
-
                 <div id="service-pills" class="flex gap-2 overflow-x-auto no-scrollbar pb-2"></div>
-
                 <div id="service-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
             </div>
 
@@ -101,22 +97,42 @@
     <section id="sec-partner" class="section-hide py-20 bg-slate-100">
         <div class="max-w-3xl mx-auto px-6">
             <div class="bg-white p-10 rounded-[3rem] shadow-2xl border text-center">
-                <h2 class="text-4xl font-black mb-2">पार्टनर बनें</h2>
+                <h2 class="text-3xl md:text-4xl font-black mb-2">पार्टनर बनें</h2>
                 <p class="text-slate-400 font-bold uppercase tracking-widest text-[10px] mb-10">Join the EzeeClap Expert Team</p>
-                <form class="space-y-4 text-left">
-                    <input type="text" placeholder="पूरा नाम" class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none">
-                    <select class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none">
-                        <option>Driver</option><option>Electrician</option><option>Plumber</option>
+                <form action="https://formspree.io/f/mnjjqggj" method="POST" class="space-y-4 text-left">
+                    <input type="text" name="Partner_Name" placeholder="पूरा नाम" required class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none">
+                    <select name="Partner_Role" class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none">
+                        <option value="Driver">Driver</option>
+                        <option value="Electrician">Electrician</option>
+                        <option value="Plumber">Plumber</option>
                     </select>
-                    <input type="tel" placeholder="WhatsApp नंबर" class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none">
-                    <button class="w-full py-5 bg-navy text-teal-400 font-black uppercase tracking-widest rounded-2xl mt-4">रजिस्टर करें</button>
+                    <input type="tel" name="WhatsApp_Number" placeholder="WhatsApp नंबर" required class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none">
+                    <button type="submit" class="w-full py-5 bg-navy text-teal-400 font-black uppercase tracking-widest rounded-2xl mt-4">रजिस्टर करें</button>
                 </form>
             </div>
         </div>
     </section>
 
+    <footer class="bg-white border-t border-slate-200 py-12 px-6 mt-12 mb-20 md:mb-0">
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-xl font-black italic uppercase mb-2">Ezee<span class="text-teal-500">Clap</span></p>
+            <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-6">Haldwani's #1 Home Service App</p>
+            <div class="flex justify-center gap-6 text-[10px] font-black uppercase tracking-widest text-navy mb-8">
+                <button onclick="showSection('hero')">Home</button>
+                <button onclick="showSection('services')">Services</button>
+                <button onclick="showSection('partner')">Partner</button>
+            </div>
+            <p class="text-slate-300 text-[9px]">© 2024 EzeeClap Haldwani. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="fixed bottom-0 left-0 right-0 bg-[#0F172A] p-4 flex gap-3 md:hidden z-[100] border-t border-white/10">
+        <button onclick="showSection('services')" class="flex-1 bg-teal-500 text-navy py-4 rounded-xl font-black uppercase text-[10px] tracking-widest">Book Now</button>
+        <button onclick="showSection('partner')" class="flex-1 border border-white/20 text-white py-4 rounded-xl font-black uppercase text-[10px] tracking-widest">Join Team</button>
+    </div>
+
     <script>
-        // FULL DATABASE (147+ ENTRIES FROM YOUR SHEET)
+        // ... [The Javascript Database and logic remains the same as in your text file] ...
         const db = [
             { "Category": "Driver", "Service": "By Day", "Task": "Haldwani/Local", "Sub_task": "4 Hours Booking", "Price": 399 },
             { "Category": "Driver", "Service": "By Day", "Task": "Haldwani/Local", "Sub_task": "8 Hours Booking", "Price": 899 },
@@ -237,7 +253,7 @@
             { "Category": "Plumber", "Service": "Bath & shower", "Task": "Shower repair", "Sub_task": " - ", "Price": 99 },
             { "Category": "Plumber", "Service": "Bath accessories", "Task": "Soap holder installation", "Sub_task": " -", "Price": 99 },
             { "Category": "Plumber", "Service": "Bath accessories", "Task": "Towel holder installation", "Sub_task": "Towel rack", "Price": 149 },
-            { "Category": "Plumber", "Service": "Bath accessories", "Task": "", "Sub_task": "Holding rod", "Price": 129 },
+            { "Category": "Plumber", "Service": "Bath accessories", "Task": "Holding rod", "Sub_task": "Holding rod", "Price": 129 },
             { "Category": "Plumber", "Service": "Basin & sink", "Task": "Wash basin leakage repair", "Sub_task": "Waste pipe", "Price": 99 },
             { "Category": "Plumber", "Service": "Basin & sink", "Task": "Wash basin leakage repair", "Sub_task": "Bottle trap", "Price": 199 },
             { "Category": "Plumber", "Service": "Basin & sink", "Task": "Wash basin blockage removal", "Sub_task": " -", "Price": 199 },
@@ -245,9 +261,8 @@
             { "Category": "Plumber", "Service": "Drainage & blockage", "Task": "Drain blockage removal", "Sub_task": "Bathroom / balcony", "Price": 199 },
             { "Category": "Plumber", "Service": "Drainage & blockage", "Task": "Drain blockage removal", "Sub_task": "Toilet pot", "Price": 1299 },
             { "Category": "Plumber", "Service": "Water tank & motor", "Task": "Overhead water tank installation", "Sub_task": "Upto 500L", "Price": 699 },
-            { "Category": "Plumber", "Service": "Water tank & motor", "Task": "", "Sub_task": "500 to 2000L", "Price": 1199 },
+            { "Category": "Plumber", "Service": "Water tank & motor", "Task": "500 to 2000L", "Sub_task": "500 to 2000L", "Price": 1199 },
             { "Category": "Plumber", "Service": "Book a consultation", "Task": "Plumber consultation", "Sub_task": " -", "Price": 49 }
-            // Note: DB contains 147 entries; truncated for readability in response.
         ];
 
         let cart = [];
@@ -265,8 +280,6 @@
             curCat = cat;
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active-tab'));
             document.getElementById('cat-'+cat).classList.add('active-tab');
-            
-            // Get unique services for this category
             const services = [...new Set(db.filter(x => x.Category === cat).map(x => x.Service))];
             curSvc = services[0];
             renderServicePills(services);
@@ -346,7 +359,6 @@
             document.getElementById('f-submit').innerText = isHindi ? "बुकिंग तय करें" : "Confirm Booking";
         }
 
-        // Initialize
         setCategory('Electrician');
     </script>
 </body>
