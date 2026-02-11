@@ -1,9 +1,18 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="hi">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PP3FWTDM0Y"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PP3FWTDM0Y');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EzeeClap | Haldwani Home Experts</title>
+    <title>EzeeClap | Kumaon's Home Experts</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -20,7 +29,7 @@
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="cursor-pointer" onclick="showSection('hero')">
                 <p class="text-2xl font-black italic tracking-tighter uppercase leading-none">Ezee<span class="text-teal-400">Clap</span></p>
-                <span class="text-[8px] font-bold text-teal-400/50 uppercase tracking-widest">Haldwani's Expert Dajus</span>
+                <span class="text-[8px] font-bold text-teal-400/50 uppercase tracking-widest">Kumaon's Expert Dajus</span>
             </div>
             <div class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-widest">
                 <button onclick="showSection('hero')" class="hover:text-teal-400">Home</button>
@@ -41,6 +50,38 @@
                 </div>
                 <div class="hidden md:flex justify-center">
                     <div class="w-80 h-80 bg-teal-400/10 rounded-[3rem] border border-teal-400/20 flex items-center justify-center text-8xl">🏠</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="sec-about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative">
+                    <div class="w-full h-96 bg-slate-100 rounded-[3rem] overflow-hidden flex items-center justify-center text-6xl shadow-inner">
+                        🤝
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-teal-400 p-8 rounded-3xl shadow-xl">
+                        <p class="text-navy font-black text-4xl leading-none">100%</p>
+                        <p class="text-navy font-bold text-[10px] uppercase tracking-widest">Verified Dajus</p>
+                    </div>
+                </div>
+                <div>
+                    <p class="text-teal-500 font-black uppercase tracking-[0.3em] text-xs mb-4">About EzeeClap</p>
+                    <h2 class="text-4xl md:text-5xl font-black mb-6 leading-tight">Kumaon's Trusted Home <span class="text-teal-500">Service Network.</span></h2>
+                    <p class="text-slate-500 font-medium leading-relaxed mb-8">
+                       Rooted in the honesty of the Hills, EzeeClap connects Haldwani homes with our finest local experts—our 'Dajus.' We don’t just offer 140+ services; we offer peace of mind with a 5-Day Job Satisfaction Warranty, fair local pricing, and a ₹5,000 Damage Protection Guarantee on every booking. Quality help from our mountains, delivered to your doorstep
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                            <p class="text-2xl font-black mb-1">140+</p>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase">Services</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                            <p class="text-2xl font-black mb-1">Local</p>
+                            <p class="text-[10px] font-bold text-slate-400 uppercase">Expertise</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -101,10 +142,19 @@
                 <p class="text-slate-400 font-bold uppercase tracking-widest text-[10px] mb-10">Join the EzeeClap Expert Team</p>
                 <form action="https://formspree.io/f/mnjjqggj" method="POST" class="space-y-4 text-left">
                     <input type="text" name="Partner_Name" placeholder="पूरा नाम" required class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none">
+                    <div class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-widest">
+    <button onclick="showSection('hero')" class="hover:text-teal-400">Home</button>
+    <a href="#sec-about" class="hover:text-teal-400 flex items-center">About Us</a> 
+    <button onclick="showSection('services')" class="bg-teal-500 text-navy px-4 py-2 rounded-full">Book Service</button>
+    <button onclick="showSection('partner')" class="border border-white/20 px-4 py-2 rounded-full">Join as Partner</button>
+</div>
                     <select name="Partner_Role" class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none">
                         <option value="Driver">Driver</option>
                         <option value="Electrician">Electrician</option>
+                        <option value="Tank Cleaning">Tank Cleaning</option>
                         <option value="Plumber">Plumber</option>
+                        <option value="Deep Cleaning">Deep Cleaning</option>
+                        <option value="AC Technicion">AC Technician</option>
                     </select>
                     <input type="tel" name="WhatsApp_Number" placeholder="WhatsApp नंबर" required class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none">
                     <button type="submit" class="w-full py-5 bg-navy text-teal-400 font-black uppercase tracking-widest rounded-2xl mt-4">रजिस्टर करें</button>
@@ -132,7 +182,6 @@
     </div>
 
     <script>
-        // ... [The Javascript Database and logic remains the same as in your text file] ...
         const db = [
             { "Category": "Driver", "Service": "By Day", "Task": "Haldwani/Local", "Sub_task": "4 Hours Booking", "Price": 399 },
             { "Category": "Driver", "Service": "By Day", "Task": "Haldwani/Local", "Sub_task": "8 Hours Booking", "Price": 899 },
