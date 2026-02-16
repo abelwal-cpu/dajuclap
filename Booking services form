@@ -1,59 +1,255 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="hi">
 <head>
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PP3FWTDM0Y"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-PP3FWTDM0Y');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EzeeClap | Kumaon's Home Experts</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="EzeeClap - Kumaon's trusted home service platform. 140+ services including electricians, plumbers, drivers & more. Verified professionals in Haldwani, Uttarakhand.">
+    <meta name="keywords" content="home services Haldwani, electrician Kumaon, plumber Haldwani, driver booking Uttarakhand, home repair services">
+    <meta name="author" content="EzeeClap">
+    <meta property="og:title" content="EzeeClap | Kumaon's Home Experts">
+    <meta property="og:description" content="Expert help arrives in a clap. 140+ home services in Haldwani, Uttarakhand.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ezeeclap.in">
+    
+    <title>EzeeClap | Kumaon's Home Experts - Electrician, Plumber, Driver Services in Haldwani</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    
     <style>
-        :root { --navy: #0F172A; --teal: #2DD4BF; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8FAFC; color: var(--navy); scroll-behavior: smooth; }
+        :root { 
+            --navy: #0F172A; 
+            --teal: #2DD4BF; 
+            --teal-dark: #14B8A6;
+        }
+        
+        body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            background-color: #F8FAFC; 
+            color: var(--navy); 
+            scroll-behavior: smooth; 
+        }
+        
+        /* Scrollbar Styling */
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        .active-tab { background: var(--teal); color: var(--navy); font-weight: 800; border-color: var(--teal); }
-        .active-svc { background: var(--navy); color: white; transform: scale(1.05); }
-        .item-selected { border: 2.5px solid var(--teal) !important; background: #F0FDFA; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 10px; }
+        
+        /* Active States */
+        .active-tab { 
+            background: var(--teal); 
+            color: var(--navy); 
+            font-weight: 800; 
+            border-color: var(--teal); 
+            box-shadow: 0 4px 12px rgba(45, 212, 191, 0.3);
+        }
+        
+        .active-svc { 
+            background: var(--navy); 
+            color: white; 
+            transform: scale(1.05); 
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+        }
+        
+        .item-selected { 
+            border: 2.5px solid var(--teal) !important; 
+            background: #F0FDFA; 
+            transform: scale(1.02);
+        }
+        
+        /* Hide/Show Utility */
         .section-hide { display: none; }
+        
+        /* Loading State */
+        .loading-spinner {
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid var(--teal);
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Pulse Animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        
+        /* Fade In Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in { animation: fadeIn 0.5s ease-out; }
+        
+        /* Search Highlight */
+        .search-highlight {
+            background: linear-gradient(120deg, #fef08a 0%, #fef08a 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 85%;
+        }
+        
+        /* Custom Checkbox */
+        .custom-checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #cbd5e1;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .custom-checkbox:checked {
+            background: var(--teal);
+            border-color: var(--teal);
+        }
+        
+        .custom-checkbox:checked::after {
+            content: '✓';
+            position: absolute;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            top: -2px;
+            left: 3px;
+        }
+        
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            border-radius: 50px;
+            padding: 12px 20px;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                bottom: 90px;
+                right: 15px;
+                padding: 10px 16px;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
-<body class="pb-20 md:pb-0"> <nav class="bg-[#0F172A] text-white py-4 px-6 sticky top-0 z-[100] border-b border-white/10">
+<body class="pb-20 md:pb-0">
+
+    <!-- Navigation -->
+    <nav class="bg-[#0F172A] text-white py-4 px-6 sticky top-0 z-[100] border-b border-white/10">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="cursor-pointer" onclick="showSection('hero')">
-                <p class="text-2xl font-black italic tracking-tighter uppercase leading-none">Ezee<span class="text-teal-400">Clap</span></p>
+            <div class="cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <p class="text-2xl font-black italic tracking-tighter uppercase leading-none">
+                    Ezee<span class="text-teal-400">Clap</span>
+                </p>
                 <span class="text-[8px] font-bold text-teal-400/50 uppercase tracking-widest">Kumaon's Expert Dajus</span>
             </div>
-            <div class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-widest">
-                <button onclick="showSection('hero')" class="hover:text-teal-400">Home</button>
-                <button onclick="showSection('services')" class="bg-teal-500 text-navy px-4 py-2 rounded-full">Book Service</button>
-                <button onclick="showSection('partner')" class="border border-white/20 px-4 py-2 rounded-full">Join as Partner</button>
+            
+            <div class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-widest items-center">
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="hover:text-teal-400 transition">Home</button>
+                <a href="#sec-about" class="hover:text-teal-400 transition">About Us</a>
+                <button onclick="showSection('services')" class="bg-teal-500 text-navy px-4 py-2 rounded-full hover:bg-teal-400 transition">Book Service</button>
+                <button onclick="showSection('partner')" class="border border-white/20 px-4 py-2 rounded-full hover:border-teal-400 hover:text-teal-400 transition">Join as Partner</button>
             </div>
-            <button onclick="showSection('partner')" class="md:hidden text-[10px] font-black uppercase text-teal-400 border border-teal-400/30 px-3 py-1 rounded-lg">Join as Partner</button>
+            
+            <button onclick="showSection('partner')" class="md:hidden text-[10px] font-black uppercase text-teal-400 border border-teal-400/30 px-3 py-1 rounded-lg hover:bg-teal-400/10 transition">
+                Join as Partner
+            </button>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section id="sec-hero">
         <div class="bg-[#0F172A] text-white pt-12 pb-24 md:pt-20 md:pb-32 px-6">
             <div class="max-w-7xl mx-auto grid md:grid-cols-2 items-center gap-12">
-                <div>
-                    <h1 class="text-4xl md:text-7xl font-black mb-6 leading-tight">Expert Help <br><span class="text-teal-400">Arrives</span> in a Clap.</h1>
-                    <p class="text-slate-400 text-lg mb-10 max-w-md italic">140+ Home Services & Professional Drivers. Serving every corner of Haldwani.</p>
-                    <button onclick="showSection('services')" class="w-full md:w-auto bg-teal-500 text-navy px-10 py-5 rounded-2xl font-black uppercase tracking-widest shadow-2xl shadow-teal-500/20">Get Started</button>
+                <div class="fade-in">
+                    <h1 class="text-4xl md:text-7xl font-black mb-6 leading-tight">
+                        Expert Help <br><span class="text-teal-400">Arrives</span> in a Clap.
+                    </h1>
+                    <p class="text-slate-400 text-lg mb-10 max-w-md italic">
+                        140+ Home Services & Professional Drivers. Serving every corner of Haldwani.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="showSection('services')" class="w-full sm:w-auto bg-teal-500 text-navy px-10 py-5 rounded-2xl font-black uppercase tracking-widest shadow-2xl shadow-teal-500/20 hover:bg-teal-400 transition transform hover:scale-105">
+                            Get Started
+                        </button>
+                        <button onclick="scrollToAbout()" class="w-full sm:w-auto border-2 border-white/20 text-white px-10 py-5 rounded-2xl font-black uppercase tracking-widest hover:border-teal-400 hover:text-teal-400 transition">
+                            Learn More
+                        </button>
+                    </div>
                 </div>
+                
                 <div class="hidden md:flex justify-center">
-                    <div class="w-80 h-80 bg-teal-400/10 rounded-[3rem] border border-teal-400/20 flex items-center justify-center text-8xl">🏠</div>
+                    <div class="w-80 h-80 bg-teal-400/10 rounded-[3rem] border border-teal-400/20 flex items-center justify-center text-8xl animate-pulse">
+                        🏠
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Trust Indicators -->
+        <div class="bg-white py-8 px-6 border-b border-slate-100">
+            <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div>
+                    <p class="text-3xl font-black text-navy mb-1">140+</p>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Services</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-black text-navy mb-1">100%</p>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Verified Dajus</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-black text-navy mb-1">5-Day</p>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Warranty</p>
+                </div>
+                <div>
+                    <p class="text-3xl font-black text-navy mb-1">₹5,000</p>
+                    <p class="text-xs font-bold text-slate-400 uppercase tracking-wider">Protection</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- About Section -->
     <section id="sec-about" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid md:grid-cols-2 gap-16 items-center">
@@ -66,18 +262,21 @@
                         <p class="text-navy font-bold text-[10px] uppercase tracking-widest">Verified Dajus</p>
                     </div>
                 </div>
+                
                 <div>
                     <p class="text-teal-500 font-black uppercase tracking-[0.3em] text-xs mb-4">About EzeeClap</p>
-                    <h2 class="text-4xl md:text-5xl font-black mb-6 leading-tight">Kumaon's Trusted Home <span class="text-teal-500">Service Network.</span></h2>
+                    <h2 class="text-4xl md:text-5xl font-black mb-6 leading-tight">
+                        Kumaon's Trusted Home <span class="text-teal-500">Service Network.</span>
+                    </h2>
                     <p class="text-slate-500 font-medium leading-relaxed mb-8">
-                       Rooted in the honesty of the Hills, EzeeClap connects Haldwani homes with our finest local experts—our 'Dajus.' We don’t just offer 140+ services; we offer peace of mind with a 5-Day Job Satisfaction Warranty, fair local pricing, and a ₹5,000 Damage Protection Guarantee on every booking. Quality help from our mountains, delivered to your doorstep
+                        Rooted in the honesty of the Hills, EzeeClap connects Haldwani homes with our finest local experts—our 'Dajus.' We don't just offer 140+ services; we offer peace of mind with a 5-Day Job Satisfaction Warranty, fair local pricing, and a ₹5,000 Damage Protection Guarantee on every booking. Quality help from our mountains, delivered to your doorstep.
                     </p>
                     <div class="grid grid-cols-2 gap-6">
-                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 hover:border-teal-400 transition">
                             <p class="text-2xl font-black mb-1">140+</p>
                             <p class="text-[10px] font-bold text-slate-400 uppercase">Services</p>
                         </div>
-                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
+                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100 hover:border-teal-400 transition">
                             <p class="text-2xl font-black mb-1">Local</p>
                             <p class="text-[10px] font-bold text-slate-400 uppercase">Expertise</p>
                         </div>
@@ -87,101 +286,421 @@
         </div>
     </section>
 
-    <section id="sec-services" class="section-hide bg-slate-50 py-12">
-        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-8 space-y-6" id="selection-view">
-                <div class="flex flex-wrap gap-2 bg-white p-2 rounded-3xl shadow-sm border border-slate-200">
-                    <button onclick="setCategory('Electrician')" id="cat-Electrician" class="cat-btn flex-1 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all">Electrician</button>
-                    <button onclick="setCategory('Plumber')" id="cat-Plumber" class="cat-btn flex-1 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all">Plumber</button>
-                    <button onclick="setCategory('Driver')" id="cat-Driver" class="cat-btn flex-1 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all">Driver</button>
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <p class="text-teal-500 font-black uppercase tracking-[0.3em] text-xs mb-4">Testimonials</p>
+                <h2 class="text-4xl md:text-5xl font-black leading-tight">
+                    What Our <span class="text-teal-500">Customers Say</span>
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-lg transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-teal-400/20 rounded-full flex items-center justify-center text-2xl">👨</div>
+                        <div>
+                            <p class="font-black text-navy">Rajesh Kumar</p>
+                            <p class="text-xs text-slate-400">Haldwani, Uttarakhand</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 italic">"Electrician arrived on time, fixed everything perfectly. Fair pricing and professional service. Highly recommend EzeeClap!"</p>
+                    <div class="mt-4 text-teal-500 text-xl">⭐⭐⭐⭐⭐</div>
                 </div>
+                
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-lg transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-teal-400/20 rounded-full flex items-center justify-center text-2xl">👩</div>
+                        <div>
+                            <p class="font-black text-navy">Priya Sharma</p>
+                            <p class="text-xs text-slate-400">Kathgodam</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 italic">"Booked a plumber through WhatsApp. Quick response, excellent work quality. The 5-day warranty gives great peace of mind."</p>
+                    <div class="mt-4 text-teal-500 text-xl">⭐⭐⭐⭐⭐</div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-lg transition">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 bg-teal-400/20 rounded-full flex items-center justify-center text-2xl">👨</div>
+                        <div>
+                            <p class="font-black text-navy">Anil Bisht</p>
+                            <p class="text-xs text-slate-400">Bhowali</p>
+                        </div>
+                    </div>
+                    <p class="text-slate-600 italic">"Best driver service in Kumaon! Reliable, punctual, and knows all the mountain routes. Worth every rupee."</p>
+                    <div class="mt-4 text-teal-500 text-xl">⭐⭐⭐⭐⭐</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="sec-services" class="bg-slate-50 py-12">
+        <div class="max-w-7xl mx-auto px-6 mb-8">
+            <div class="text-center">
+                <p class="text-teal-500 font-black uppercase tracking-[0.3em] text-xs mb-4">Our Services</p>
+                <h2 class="text-4xl md:text-5xl font-black mb-4 leading-tight">
+                    Book Your <span class="text-teal-500">Home Service</span>
+                </h2>
+                <p class="text-slate-500 max-w-2xl mx-auto">
+                    Select services, add to cart, and book instantly. All our Dajus are verified with 5-day warranty.
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-8">
+            <!-- Service Selection View -->
+            <div class="lg:col-span-8 space-y-6" id="selection-view">
+                <!-- Search Bar -->
+                <div class="bg-white p-4 rounded-3xl shadow-sm border border-slate-200">
+                    <div class="relative">
+                        <input 
+                            type="text" 
+                            id="service-search" 
+                            placeholder="🔍 Search services (e.g., 'fan repair', 'plumber', 'driver')..." 
+                            class="w-full px-6 py-4 rounded-2xl bg-slate-50 font-bold outline-none border-2 border-transparent focus:border-teal-400 transition"
+                            oninput="searchServices()"
+                        >
+                        <button onclick="clearSearch()" id="clear-search" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-navy transition hidden">
+                            ✕
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Category Tabs -->
+                <div class="flex flex-wrap gap-2 bg-white p-2 rounded-3xl shadow-sm border border-slate-200">
+                    <button onclick="setCategory('Electrician')" id="cat-Electrician" class="cat-btn flex-1 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all hover:bg-slate-50">
+                        ⚡ Electrician
+                    </button>
+                    <button onclick="setCategory('Plumber')" id="cat-Plumber" class="cat-btn flex-1 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all hover:bg-slate-50">
+                        🔧 Plumber
+                    </button>
+                    <button onclick="setCategory('Driver')" id="cat-Driver" class="cat-btn flex-1 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest transition-all hover:bg-slate-50">
+                        🚗 Driver
+                    </button>
+                </div>
+                
+                <!-- Service Pills -->
                 <div id="service-pills" class="flex gap-2 overflow-x-auto no-scrollbar pb-2"></div>
+                
+                <!-- Results Count -->
+                <div id="results-info" class="text-sm font-bold text-slate-500"></div>
+                
+                <!-- Service Grid -->
                 <div id="service-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                
+                <!-- No Results Message -->
+                <div id="no-results" class="hidden text-center py-16">
+                    <p class="text-6xl mb-4">🔍</p>
+                    <p class="text-xl font-black text-slate-300 mb-2">No services found</p>
+                    <p class="text-slate-400 mb-6">Try adjusting your search or browse our categories</p>
+                    <button onclick="clearSearch()" class="bg-teal-500 text-navy px-8 py-3 rounded-xl font-black uppercase text-xs">
+                        Clear Search
+                    </button>
+                </div>
             </div>
 
+            <!-- Booking Form View -->
             <div class="lg:col-span-8 section-hide" id="booking-view">
                 <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border">
                     <div class="flex justify-between items-center mb-8">
-                        <button onclick="toggleServiceView('selection')" class="text-teal-600 font-bold text-xs uppercase">← Back</button>
-                        <button onclick="toggleBookingLang()" id="lang-btn" class="bg-slate-100 px-4 py-2 rounded-full text-[10px] font-black uppercase">हिन्दी में बदलें</button>
+                        <button onclick="toggleServiceView('selection')" class="text-teal-600 font-bold text-xs uppercase hover:text-teal-700 transition">
+                            ← Back to Services
+                        </button>
+                        <button onclick="toggleBookingLang()" id="lang-btn" class="bg-slate-100 px-4 py-2 rounded-full text-[10px] font-black uppercase hover:bg-slate-200 transition">
+                            हिन्दी में बदलें
+                        </button>
                     </div>
-                    <form action="https://formspree.io/f/mnjjqggj" method="POST" class="space-y-4">
+                    
+                    <form action="https://formspree.io/f/mnjjqggj" method="POST" class="space-y-4" onsubmit="return handleBookingSubmit(event)">
                         <input type="hidden" name="Order_Summary" id="form-order-data">
-                        <input type="text" name="Name" id="f-name" placeholder="Full Name" required class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none border-2 border-transparent focus:border-teal-400">
-                        <input type="tel" name="WhatsApp" id="f-phone" placeholder="WhatsApp Number" required class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none">
-                        <textarea name="Address" id="f-address" placeholder="Haldwani Address (Landmark, Area)" required class="w-full p-4 bg-slate-50 rounded-xl font-bold h-32 outline-none"></textarea>
-                        <button type="submit" id="f-submit" class="w-full py-5 bg-teal-500 text-navy font-black uppercase tracking-widest rounded-2xl shadow-lg">Confirm Booking</button>
+                        <input type="hidden" name="Order_Total" id="form-order-total">
+                        
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Full Name *</label>
+                            <input 
+                                type="text" 
+                                name="Name" 
+                                id="f-name" 
+                                placeholder="Enter your full name" 
+                                required 
+                                class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none border-2 border-transparent focus:border-teal-400 transition"
+                            >
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-2">WhatsApp Number *</label>
+                            <input 
+                                type="tel" 
+                                name="WhatsApp" 
+                                id="f-phone" 
+                                placeholder="10-digit mobile number" 
+                                required 
+                                pattern="[6-9][0-9]{9}"
+                                title="Please enter a valid 10-digit Indian mobile number"
+                                class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none border-2 border-transparent focus:border-teal-400 transition"
+                            >
+                            <p class="text-xs text-slate-400 mt-1">We'll confirm your booking via WhatsApp</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Service Address *</label>
+                            <textarea 
+                                name="Address" 
+                                id="f-address" 
+                                placeholder="Full address in Haldwani (include landmark and area)" 
+                                required 
+                                class="w-full p-4 bg-slate-50 rounded-xl font-bold h-32 outline-none border-2 border-transparent focus:border-teal-400 transition resize-none"
+                            ></textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Preferred Date & Time (Optional)</label>
+                            <input 
+                                type="text" 
+                                name="Preferred_DateTime" 
+                                id="f-datetime" 
+                                placeholder="e.g., Tomorrow 10 AM or 15 Dec 2024, 2 PM" 
+                                class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none border-2 border-transparent focus:border-teal-400 transition"
+                            >
+                        </div>
+                        
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 uppercase mb-2">Additional Notes (Optional)</label>
+                            <textarea 
+                                name="Additional_Notes" 
+                                id="f-notes" 
+                                placeholder="Any specific requirements or questions?" 
+                                class="w-full p-4 bg-slate-50 rounded-xl font-bold h-24 outline-none border-2 border-transparent focus:border-teal-400 transition resize-none"
+                            ></textarea>
+                        </div>
+                        
+                        <button 
+                            type="submit" 
+                            id="f-submit" 
+                            class="w-full py-5 bg-teal-500 text-navy font-black uppercase tracking-widest rounded-2xl shadow-lg hover:bg-teal-400 transition transform hover:scale-[1.02] flex items-center justify-center gap-3"
+                        >
+                            <span>Confirm Booking</span>
+                            <span id="submit-spinner" class="loading-spinner hidden"></span>
+                        </button>
+                        
+                        <p class="text-xs text-center text-slate-400 mt-4">
+                            By confirming, you agree to our service terms. We'll contact you within 30 minutes.
+                        </p>
                     </form>
                 </div>
             </div>
 
+            <!-- Cart/Summary Sidebar -->
             <div class="lg:col-span-4">
                 <div class="bg-white p-8 rounded-[2.5rem] shadow-xl border border-slate-100 sticky top-24">
-                    <h3 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">Booking Details</h3>
-                    <div id="cart-list" class="space-y-3 mb-8 min-h-[100px] max-h-[350px] overflow-y-auto pr-2">
-                        <p class="text-slate-300 italic text-sm text-center py-10">Nothing selected yet</p>
+                    <h3 class="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-6">Booking Summary</h3>
+                    
+                    <div id="cart-list" class="space-y-3 mb-8 min-h-[100px] max-h-[350px] overflow-y-auto custom-scrollbar pr-2">
+                        <div class="text-center py-10">
+                            <p class="text-5xl mb-3">🛒</p>
+                            <p class="text-slate-300 italic text-sm">Nothing selected yet</p>
+                        </div>
                     </div>
-                    <div class="border-t pt-6">
-                        <div class="flex justify-between items-end mb-8">
+                    
+                    <div class="border-t pt-6 space-y-4">
+                        <div class="flex justify-between items-end mb-4">
                             <div>
-                                <p class="text-[10px] font-bold text-slate-400 uppercase leading-none">Total</p>
+                                <p class="text-[10px] font-bold text-slate-400 uppercase leading-none">Total Amount</p>
                                 <p id="total-val" class="text-5xl font-black text-navy leading-none">₹0</p>
                             </div>
                         </div>
-                        <button id="book-trigger" onclick="toggleServiceView('booking')" disabled class="w-full py-5 bg-slate-100 text-slate-400 rounded-2xl font-black uppercase text-xs">Select Services</button>
+                        
+                        <div class="bg-teal-50 border border-teal-200 rounded-xl p-4 text-xs">
+                            <p class="font-bold text-teal-900 mb-1">✓ 5-Day Job Warranty</p>
+                            <p class="text-teal-700">✓ ₹5,000 Damage Protection</p>
+                        </div>
+                        
+                        <button 
+                            id="book-trigger" 
+                            onclick="toggleServiceView('booking')" 
+                            disabled 
+                            class="w-full py-5 bg-slate-100 text-slate-400 rounded-2xl font-black uppercase text-xs transition cursor-not-allowed"
+                        >
+                            Select Services First
+                        </button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="sec-partner" class="section-hide py-20 bg-slate-100">
+    <!-- Partner Section -->
+    <section id="sec-partner" class="py-20 bg-slate-100">
+        <div class="max-w-7xl mx-auto px-6 mb-8 text-center">
+            <p class="text-teal-500 font-black uppercase tracking-[0.3em] text-xs mb-4">Join Our Network</p>
+            <h2 class="text-4xl md:text-5xl font-black mb-4 leading-tight">
+                Become a <span class="text-teal-500">Partner</span>
+            </h2>
+            <p class="text-slate-500 max-w-2xl mx-auto">
+                Join EzeeClap's network of verified professionals and grow your business with steady customer flow.
+            </p>
+        </div>
         <div class="max-w-3xl mx-auto px-6">
             <div class="bg-white p-10 rounded-[3rem] shadow-2xl border text-center">
-                <h2 class="text-3xl md:text-4xl font-black mb-2">पार्टनर बनें</h2>
-                <p class="text-slate-400 font-bold uppercase tracking-widest text-[10px] mb-10">Join the EzeeClap Expert Team</p>
-                <form action="https://formspree.io/f/mnjjqggj" method="POST" class="space-y-4 text-left">
-                    <input type="text" name="Partner_Name" placeholder="पूरा नाम" required class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none">
-                    <div class="hidden md:flex gap-6 text-[10px] font-bold uppercase tracking-widest">
-    <button onclick="showSection('hero')" class="hover:text-teal-400">Home</button>
-    <a href="#sec-about" class="hover:text-teal-400 flex items-center">About Us</a> 
-    <button onclick="showSection('services')" class="bg-teal-500 text-navy px-4 py-2 rounded-full">Book Service</button>
-    <button onclick="showSection('partner')" class="border border-white/20 px-4 py-2 rounded-full">Join as Partner</button>
-</div>
-                    <select name="Partner_Role" class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none">
-                        <option value="Driver">Driver</option>
-                        <option value="Electrician">Electrician</option>
-                        <option value="Tank Cleaning">Tank Cleaning</option>
-                        <option value="Plumber">Plumber</option>
-                        <option value="Deep Cleaning">Deep Cleaning</option>
-                        <option value="AC Technicion">AC Technician</option>
-                    </select>
-                    <input type="tel" name="WhatsApp_Number" placeholder="WhatsApp नंबर" required class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none">
-                    <button type="submit" class="w-full py-5 bg-navy text-teal-400 font-black uppercase tracking-widest rounded-2xl mt-4">रजिस्टर करें</button>
+                <div class="mb-8">
+                    <h2 class="text-3xl md:text-4xl font-black mb-2">पार्टनर बनें</h2>
+                    <p class="text-slate-400 font-bold uppercase tracking-widest text-[10px]">Join the EzeeClap Expert Team</p>
+                </div>
+                
+                <div class="bg-teal-50 border border-teal-200 rounded-2xl p-6 mb-8 text-left">
+                    <p class="font-black text-navy mb-3">Why Join EzeeClap?</p>
+                    <ul class="space-y-2 text-sm text-slate-600">
+                        <li>✓ Steady flow of verified customers</li>
+                        <li>✓ Fair pricing and timely payments</li>
+                        <li>✓ Build your professional reputation</li>
+                        <li>✓ Flexible working hours</li>
+                    </ul>
+                </div>
+                
+                <form action="https://formspree.io/f/mnjjqggj" method="POST" class="space-y-4 text-left" onsubmit="return handlePartnerSubmit(event)">
+                    <input type="hidden" name="Form_Type" value="Partner_Registration">
+                    
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2">पूरा नाम *</label>
+                        <input 
+                            type="text" 
+                            name="Partner_Name" 
+                            placeholder="आपका पूरा नाम" 
+                            required 
+                            class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none border-2 border-transparent focus:border-teal-400 transition"
+                        >
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2">सेवा का प्रकार *</label>
+                        <select 
+                            name="Partner_Role" 
+                            required
+                            class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none border-2 border-transparent focus:border-teal-400 transition cursor-pointer"
+                        >
+                            <option value="">चुनें...</option>
+                            <option value="Driver">Driver (चालक)</option>
+                            <option value="Electrician">Electrician (बिजली मिस्त्री)</option>
+                            <option value="Plumber">Plumber (प्लम्बर)</option>
+                            <option value="Tank Cleaning">Tank Cleaning (टंकी सफाई)</option>
+                            <option value="Deep Cleaning">Deep Cleaning (गहरी सफाई)</option>
+                            <option value="AC Technician">AC Technician (एसी तकनीशियन)</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2">WhatsApp नंबर *</label>
+                        <input 
+                            type="tel" 
+                            name="WhatsApp_Number" 
+                            placeholder="10-अंकीय मोबाइल नंबर" 
+                            required 
+                            pattern="[6-9][0-9]{9}"
+                            title="कृपया मान्य 10-अंकीय भारतीय मोबाइल नंबर दर्ज करें"
+                            class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none border-2 border-transparent focus:border-teal-400 transition"
+                        >
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2">अनुभव (वर्षों में)</label>
+                        <input 
+                            type="number" 
+                            name="Experience_Years" 
+                            placeholder="कितने साल का अनुभव है?" 
+                            min="0"
+                            class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none border-2 border-transparent focus:border-teal-400 transition"
+                        >
+                    </div>
+                    
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 uppercase mb-2">एरिया (कहाँ काम करना चाहते हैं?)</label>
+                        <input 
+                            type="text" 
+                            name="Service_Area" 
+                            placeholder="जैसे: हल्द्वानी, काठगोदाम, भवाली" 
+                            class="w-full p-4 bg-slate-50 rounded-xl font-bold outline-none border-2 border-transparent focus:border-teal-400 transition"
+                        >
+                    </div>
+                    
+                    <button 
+                        type="submit" 
+                        class="w-full py-5 bg-navy text-teal-400 font-black uppercase tracking-widest rounded-2xl mt-4 hover:bg-slate-800 transition transform hover:scale-[1.02] flex items-center justify-center gap-3"
+                    >
+                        <span>रजिस्टर करें</span>
+                        <span id="partner-spinner" class="loading-spinner hidden" style="border-top-color: #2DD4BF;"></span>
+                    </button>
                 </form>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 py-12 px-6 mt-12 mb-20 md:mb-0">
-        <div class="max-w-7xl mx-auto text-center">
-            <p class="text-xl font-black italic uppercase mb-2">Ezee<span class="text-teal-500">Clap</span></p>
-            <p class="text-slate-400 text-[10px] font-bold uppercase tracking-widest mb-6">Haldwani's #1 Home Service App</p>
-            <div class="flex justify-center gap-6 text-[10px] font-black uppercase tracking-widest text-navy mb-8">
-                <button onclick="showSection('hero')">Home</button>
-                <button onclick="showSection('services')">Services</button>
-                <button onclick="showSection('partner')">Partner</button>
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <p class="text-xl font-black italic uppercase mb-2">Ezee<span class="text-teal-500">Clap</span></p>
+                    <p class="text-slate-400 text-xs mb-4">Haldwani's #1 Home Service Platform</p>
+                    <p class="text-slate-500 text-sm">Serving Kumaon with trusted local experts since 2024.</p>
+                </div>
+                
+                <div>
+                    <p class="font-black text-navy text-sm mb-4 uppercase">Quick Links</p>
+                    <div class="space-y-2 text-sm text-slate-600">
+                        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="block hover:text-teal-500 transition">Home</button>
+                        <button onclick="showSection('services')" class="block hover:text-teal-500 transition">Book Service</button>
+                        <button onclick="showSection('partner')" class="block hover:text-teal-500 transition">Become Partner</button>
+                        <a href="#sec-about" class="block hover:text-teal-500 transition">About Us</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <p class="font-black text-navy text-sm mb-4 uppercase">Services</p>
+                    <div class="space-y-2 text-sm text-slate-600">
+                        <p>Electrician Services</p>
+                        <p>Plumbing Services</p>
+                        <p>Driver Services</p>
+                        <p>Cleaning Services</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <p class="font-black text-navy text-sm mb-4 uppercase">Contact</p>
+                    <div class="space-y-2 text-sm text-slate-600">
+                        <p>📍 Haldwani, Uttarakhand</p>
+                        <p>📱 WhatsApp Support</p>
+                        <p>⏰ Available 24/7</p>
+                    </div>
+                </div>
             </div>
-            <p class="text-slate-300 text-[9px]">© 2024 EzeeClap Haldwani. All rights reserved.</p>
+            
+            <div class="border-t pt-8 text-center">
+                <p class="text-slate-400 text-xs">© 2024 EzeeClap. All rights reserved. | Made with ❤️ in the Hills</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Fixed Bottom Bar (Mobile) -->
     <div class="fixed bottom-0 left-0 right-0 bg-[#0F172A] p-4 flex gap-3 md:hidden z-[100] border-t border-white/10">
-        <button onclick="showSection('services')" class="flex-1 bg-teal-500 text-navy py-4 rounded-xl font-black uppercase text-[10px] tracking-widest">Book Now</button>
-        <button onclick="showSection('partner')" class="flex-1 border border-white/20 text-white py-4 rounded-xl font-black uppercase text-[10px] tracking-widest">Join Team</button>
+        <button onclick="showSection('services')" class="flex-1 bg-teal-500 text-navy py-4 rounded-xl font-black uppercase text-[10px] tracking-widest hover:bg-teal-400 transition">
+            Book Now
+        </button>
+        <button onclick="showSection('partner')" class="flex-1 border border-white/20 text-white py-4 rounded-xl font-black uppercase text-[10px] tracking-widest hover:border-teal-400 hover:text-teal-400 transition">
+            Join Team
+        </button>
     </div>
 
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919876543210?text=Hi%20EzeeClap!%20I%20need%20help%20with%20home%20services" target="_blank" class="whatsapp-float">
+        <span style="font-size: 20px;">💬</span>
+        <span>Chat on WhatsApp</span>
+    </a>
+
+    <!-- JavaScript -->
     <script>
+        // Service Database
         const db = [
             { "Category": "Driver", "Service": "By Day", "Task": "Haldwani/Local", "Sub_task": "4 Hours Booking", "Price": 399 },
             { "Category": "Driver", "Service": "By Day", "Task": "Haldwani/Local", "Sub_task": "8 Hours Booking", "Price": 899 },
@@ -201,7 +720,7 @@
             { "Category": "Electrician", "Service": "Switch & socket", "Task": "New switchbox installation", "Sub_task": "AC switchboard", "Price": 299 },
             { "Category": "Electrician", "Service": "Fan", "Task": "Fan repair", "Sub_task": "Noise", "Price": 149 },
             { "Category": "Electrician", "Service": "Fan", "Task": "Fan repair", "Sub_task": "Slow speed", "Price": 149 },
-            { "Category": "Electrician", "Service": "Fan", "Task": "Fan repair", "Sub_task": "Blades not spiing ", "Price": 149 },
+            { "Category": "Electrician", "Service": "Fan", "Task": "Fan repair", "Sub_task": "Blades not spinning ", "Price": 149 },
             { "Category": "Electrician", "Service": "Fan", "Task": "Regular ceiling fan installation", "Sub_task": "Only installation", "Price": 149 },
             { "Category": "Electrician", "Service": "Fan", "Task": "Regular ceiling fan installation", "Sub_task": "Replacement", "Price": 229 },
             { "Category": "Electrician", "Service": "Fan", "Task": "Regular ceiling fan installation", "Sub_task": "Only uninstallation", "Price": 99 },
@@ -222,7 +741,7 @@
             { "Category": "Electrician", "Service": "Light", "Task": "Bulb installation/replacement", "Sub_task": "Bulb & holder", "Price": 99 },
             { "Category": "Electrician", "Service": "Light", "Task": "Ceiling light installation", "Sub_task": "Cob light (false ceiling)", "Price": 89 },
             { "Category": "Electrician", "Service": "Light", "Task": "Ceiling light installation", "Sub_task": "Surface light ", "Price": 99 },
-            { "Category": "Electrician", "Service": "Light", "Task": "Hanging light installation", "Sub_task": "Small (upto 6 blbs)", "Price": 199 },
+            { "Category": "Electrician", "Service": "Light", "Task": "Hanging light installation", "Sub_task": "Small (upto 6 bulbs)", "Price": 199 },
             { "Category": "Electrician", "Service": "Light", "Task": "Hanging light installation", "Sub_task": "Medium (upto 12 bulbs)", "Price": 249 },
             { "Category": "Electrician", "Service": "Light", "Task": "Hanging light installation", "Sub_task": "Large (more than 12 bulbs)", "Price": 399 },
             { "Category": "Electrician", "Service": "Light", "Task": "Chandelier installation", "Sub_task": "Small", "Price": 499 },
@@ -231,7 +750,7 @@
             { "Category": "Electrician", "Service": "Light", "Task": "Chandelier installation", "Sub_task": "Extra large (30+ kg)", "Price": 1999 },
             { "Category": "Electrician", "Service": "Wiring", "Task": "New internal wiring (per 5m)", "Sub_task": " -", "Price": 199 },
             { "Category": "Electrician", "Service": "Wiring", "Task": "New external wiring (per 5m)", "Sub_task": "With casting", "Price": 229 },
-            { "Category": "Electrician", "Service": "Wiring", "Task": "New external wiring (per 5m)", "Sub_task": "Without cating", "Price": 119 },
+            { "Category": "Electrician", "Service": "Wiring", "Task": "New external wiring (per 5m)", "Sub_task": "Without casting", "Price": 119 },
             { "Category": "Electrician", "Service": "Doorbell & Security", "Task": "Regular doorbell installation", "Sub_task": "Installation", "Price": 99 },
             { "Category": "Electrician", "Service": "Doorbell & Security", "Task": "Regular doorbell installation", "Sub_task": "Replacement ", "Price": 129 },
             { "Category": "Electrician", "Service": "Doorbell & Security", "Task": "Video doorbell installation", "Sub_task": "Installation", "Price": 600 },
@@ -239,11 +758,11 @@
             { "Category": "Electrician", "Service": "Doorbell & Security", "Task": "Wireless CCTV installation", "Sub_task": " -", "Price": 299 },
             { "Category": "Electrician", "Service": "MCB/fuse", "Task": "MCB/fuse repair", "Sub_task": "1 switch", "Price": 149 },
             { "Category": "Electrician", "Service": "MCB/fuse", "Task": "MCB/fuse repair", "Sub_task": "2 switches", "Price": 179 },
-            { "Category": "Electrician", "Service": "MCB/fuse", "Task": "MCB/fuse repair", "Sub_task": "3 swiches", "Price": 199 },
+            { "Category": "Electrician", "Service": "MCB/fuse", "Task": "MCB/fuse repair", "Sub_task": "3 switches", "Price": 199 },
             { "Category": "Electrician", "Service": "MCB/fuse", "Task": "MCB/fuse repair", "Sub_task": "4 switches", "Price": 249 },
             { "Category": "Electrician", "Service": "MCB/fuse", "Task": "MCB/fuse replacement", "Sub_task": "1 switch", "Price": 149 },
             { "Category": "Electrician", "Service": "MCB/fuse", "Task": "MCB/fuse replacement", "Sub_task": "2 switches", "Price": 199 },
-            { "Category": "Electrician", "Service": "MCB/fuse", "Task": "MCB/fuse replacement", "Sub_task": "3 swiches", "Price": 249 },
+            { "Category": "Electrician", "Service": "MCB/fuse", "Task": "MCB/fuse replacement", "Sub_task": "3 switches", "Price": 249 },
             { "Category": "Electrician", "Service": "MCB/fuse", "Task": "MCB/fuse replacement", "Sub_task": "4 switches", "Price": 329 },
             { "Category": "Electrician", "Service": "MCB/fuse", "Task": "Submeter installation", "Sub_task": " -", "Price": 249 },
             { "Category": "Electrician", "Service": "Appliances", "Task": "Home theatre installation", "Sub_task": " - ", "Price": 199 },
@@ -310,105 +829,281 @@
             { "Category": "Plumber", "Service": "Drainage & blockage", "Task": "Drain blockage removal", "Sub_task": "Bathroom / balcony", "Price": 199 },
             { "Category": "Plumber", "Service": "Drainage & blockage", "Task": "Drain blockage removal", "Sub_task": "Toilet pot", "Price": 1299 },
             { "Category": "Plumber", "Service": "Water tank & motor", "Task": "Overhead water tank installation", "Sub_task": "Upto 500L", "Price": 699 },
-            { "Category": "Plumber", "Service": "Water tank & motor", "Task": "500 to 2000L", "Sub_task": "500 to 2000L", "Price": 1199 },
+            { "Category": "Plumber", "Service": "Water tank & motor", "Task": "Overhead water tank installation", "Sub_task": "500 to 2000L", "Price": 1199 },
             { "Category": "Plumber", "Service": "Book a consultation", "Task": "Plumber consultation", "Sub_task": " -", "Price": 49 }
         ];
 
+        // State Management
         let cart = [];
         let curCat = 'Electrician';
         let curSvc = '';
         let isHindi = false;
+        let searchQuery = '';
 
+        // Initialize
+        window.onload = function() {
+            setCategory('Electrician');
+        };
+
+        // Section Navigation
         function showSection(id) {
-            ['hero', 'services', 'partner'].forEach(s => document.getElementById('sec-'+s).classList.add('section-hide'));
-            document.getElementById('sec-'+id).classList.remove('section-hide');
-            window.scrollTo(0,0);
+            if (id === 'hero') {
+                // Go to top
+                window.scrollTo({top: 0, behavior: 'smooth'});
+            } else {
+                // Show the section and scroll to it
+                document.getElementById('sec-'+id).classList.remove('section-hide');
+                document.getElementById('sec-'+id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         }
 
+        // Smooth scroll to about
+        function scrollToAbout() {
+            document.getElementById('sec-about').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Category Selection
         function setCategory(cat) {
             curCat = cat;
+            searchQuery = '';
+            document.getElementById('service-search').value = '';
+            
+            // Update active tab
             document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active-tab'));
             document.getElementById('cat-'+cat).classList.add('active-tab');
+            
+            // Get services for category
             const services = [...new Set(db.filter(x => x.Category === cat).map(x => x.Service))];
             curSvc = services[0];
+            
             renderServicePills(services);
             renderGrid();
         }
 
+        // Service Pills
         function renderServicePills(svcs) {
             const bar = document.getElementById('service-pills');
             bar.innerHTML = svcs.map(s => `
-                <button onclick="setService('${s}')" class="whitespace-nowrap px-6 py-2 rounded-full text-[10px] font-black uppercase border border-slate-200 transition-all ${curSvc === s ? 'active-svc' : 'bg-white text-slate-400'}">
+                <button onclick="setService('${s}')" class="whitespace-nowrap px-6 py-2 rounded-full text-[10px] font-black uppercase border border-slate-200 transition-all ${curSvc === s ? 'active-svc' : 'bg-white text-slate-400 hover:border-navy'}">
                     ${s}
                 </button>
             `).join('');
         }
 
-        function setService(s) { curSvc = s; renderServicePills([...new Set(db.filter(x => x.Category === curCat).map(x => x.Service))]); renderGrid(); }
+        // Service Selection
+        function setService(s) { 
+            curSvc = s; 
+            searchQuery = '';
+            document.getElementById('service-search').value = '';
+            renderServicePills([...new Set(db.filter(x => x.Category === curCat).map(x => x.Service))]); 
+            renderGrid(); 
+        }
 
+        // Search Functionality
+        function searchServices() {
+            const input = document.getElementById('service-search');
+            searchQuery = input.value.toLowerCase().trim();
+            
+            const clearBtn = document.getElementById('clear-search');
+            if (searchQuery) {
+                clearBtn.classList.remove('hidden');
+            } else {
+                clearBtn.classList.add('hidden');
+            }
+            
+            renderGrid();
+        }
+
+        function clearSearch() {
+            searchQuery = '';
+            document.getElementById('service-search').value = '';
+            document.getElementById('clear-search').classList.add('hidden');
+            renderGrid();
+        }
+
+        // Render Service Grid
         function renderGrid() {
             const grid = document.getElementById('service-grid');
-            const items = db.filter(x => x.Category === curCat && x.Service === curSvc);
+            const noResults = document.getElementById('no-results');
+            const resultsInfo = document.getElementById('results-info');
+            
+            let items;
+            
+            if (searchQuery) {
+                // Search across all categories
+                items = db.filter(i => 
+                    i.Category.toLowerCase().includes(searchQuery) ||
+                    i.Service.toLowerCase().includes(searchQuery) ||
+                    i.Task.toLowerCase().includes(searchQuery) ||
+                    i.Sub_task.toLowerCase().includes(searchQuery)
+                );
+            } else {
+                // Filter by current category and service
+                items = db.filter(x => x.Category === curCat && x.Service === curSvc);
+            }
+            
+            if (items.length === 0) {
+                grid.classList.add('hidden');
+                noResults.classList.remove('hidden');
+                resultsInfo.textContent = '';
+                return;
+            }
+            
+            grid.classList.remove('hidden');
+            noResults.classList.add('hidden');
+            
+            // Update results info
+            if (searchQuery) {
+                resultsInfo.textContent = `Found ${items.length} result${items.length !== 1 ? 's' : ''} for "${searchQuery}"`;
+            } else {
+                resultsInfo.textContent = `${items.length} service${items.length !== 1 ? 's' : ''} available`;
+            }
+            
             grid.innerHTML = items.map((i, idx) => {
-                const sel = cart.some(x => x.Sub_task === i.Sub_task && x.Task === i.Task);
+                const sel = cart.some(x => x.Sub_task === i.Sub_task && x.Task === i.Task && x.Category === i.Category);
+                const displayText = i.Sub_task === '-' ? i.Task : i.Sub_task;
+                
                 return `
-                    <div onclick="toggleCart(${db.indexOf(i)})" class="bg-white p-6 rounded-[2rem] border-2 cursor-pointer transition-all ${sel ? 'item-selected' : 'border-transparent shadow-sm hover:border-slate-200'}">
-                        <p class="text-[8px] font-black text-slate-400 uppercase mb-1">${i.Task}</p>
-                        <p class="text-sm font-extrabold text-navy leading-tight mb-4 min-h-[40px]">${i.Sub_task === '-' ? i.Task : i.Sub_task}</p>
+                    <div onclick="toggleCart(${db.indexOf(i)})" class="bg-white p-6 rounded-[2rem] border-2 cursor-pointer transition-all ${sel ? 'item-selected' : 'border-transparent shadow-sm hover:border-slate-200 hover:shadow-md'}">
+                        <div class="flex items-start justify-between mb-2">
+                            <p class="text-[8px] font-black text-slate-400 uppercase">${i.Category} • ${i.Service}</p>
+                            ${sel ? '<span class="text-teal-600 text-xl">✓</span>' : ''}
+                        </div>
+                        <p class="text-[8px] font-bold text-slate-500 uppercase mb-1">${i.Task}</p>
+                        <p class="text-sm font-extrabold text-navy leading-tight mb-4 min-h-[40px]">${displayText}</p>
                         <div class="flex justify-between items-center">
                             <p class="font-black text-2xl">₹${i.Price}</p>
-                            <span class="text-[9px] font-black uppercase ${sel ? 'text-teal-600' : 'text-slate-300'}">${sel ? '✓ Added' : 'Add +'}</span>
+                            <span class="text-[9px] font-black uppercase ${sel ? 'text-teal-600' : 'text-slate-300'}">${sel ? 'Added' : 'Add +'}</span>
                         </div>
                     </div>
                 `;
             }).join('');
         }
 
+        // Cart Management
         function toggleCart(idx) {
             const item = db[idx];
-            const cIdx = cart.findIndex(x => x.Sub_task === item.Sub_task && x.Task === item.Task);
-            if(cIdx > -1) cart.splice(cIdx, 1);
-            else cart.push(item);
+            const cIdx = cart.findIndex(x => 
+                x.Sub_task === item.Sub_task && 
+                x.Task === item.Task && 
+                x.Category === item.Category
+            );
+            
+            if(cIdx > -1) {
+                cart.splice(cIdx, 1);
+            } else {
+                cart.push(item);
+            }
+            
             updateUI();
             renderGrid();
         }
 
+        // Update UI
         function updateUI() {
             const list = document.getElementById('cart-list');
             const totalDisplay = document.getElementById('total-val');
             const bookBtn = document.getElementById('book-trigger');
+            
             if(cart.length === 0) {
-                list.innerHTML = `<p class="text-slate-300 italic text-sm text-center py-10">Nothing selected yet</p>`;
+                list.innerHTML = `
+                    <div class="text-center py-10">
+                        <p class="text-5xl mb-3">🛒</p>
+                        <p class="text-slate-300 italic text-sm">Nothing selected yet</p>
+                    </div>
+                `;
                 totalDisplay.innerText = '₹0';
                 bookBtn.disabled = true;
-                bookBtn.className = "w-full py-5 bg-slate-100 text-slate-400 rounded-2xl font-black uppercase text-xs";
+                bookBtn.className = "w-full py-5 bg-slate-100 text-slate-400 rounded-2xl font-black uppercase text-xs transition cursor-not-allowed";
+                bookBtn.innerText = "Select Services First";
             } else {
-                list.innerHTML = cart.map(i => `<div class="flex justify-between items-center bg-slate-50 p-4 rounded-2xl border border-slate-100"><p class="text-[10px] font-black truncate max-w-[70%]">${i.Sub_task === '-' ? i.Task : i.Sub_task}</p><p class="text-xs font-black">₹${i.Price}</p></div>`).join('');
+                list.innerHTML = cart.map((i, index) => `
+                    <div class="flex justify-between items-center bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:border-teal-200 transition group">
+                        <div class="flex-1 mr-3">
+                            <p class="text-[9px] font-bold text-slate-400 uppercase mb-1">${i.Category}</p>
+                            <p class="text-[10px] font-black truncate">${i.Sub_task === '-' ? i.Task : i.Sub_task}</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <p class="text-xs font-black">₹${i.Price}</p>
+                            <button onclick="event.stopPropagation(); removeFromCart(${index})" class="text-slate-400 hover:text-red-500 transition opacity-0 group-hover:opacity-100">
+                                <span class="text-xs">✕</span>
+                            </button>
+                        </div>
+                    </div>
+                `).join('');
+                
                 const total = cart.reduce((acc, curr) => acc + curr.Price, 0);
                 totalDisplay.innerText = '₹' + total;
-                document.getElementById('form-order-data').value = `Total: ₹${total} | Items: ${cart.map(c => c.Sub_task).join(', ')}`;
+                
+                // Update hidden form fields
+                document.getElementById('form-order-data').value = cart.map(c => 
+                    `${c.Category}: ${c.Sub_task === '-' ? c.Task : c.Sub_task} (₹${c.Price})`
+                ).join(' | ');
+                document.getElementById('form-order-total').value = '₹' + total;
+                
                 bookBtn.disabled = false;
-                bookBtn.className = "w-full py-5 bg-teal-500 text-navy rounded-2xl font-black uppercase text-xs shadow-lg cursor-pointer";
+                bookBtn.className = "w-full py-5 bg-teal-500 text-navy rounded-2xl font-black uppercase text-xs shadow-lg cursor-pointer hover:bg-teal-400 transition transform hover:scale-[1.02]";
+                bookBtn.innerHTML = `Proceed to Book (${cart.length} item${cart.length !== 1 ? 's' : ''})`;
             }
         }
 
+        // Remove from cart
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateUI();
+            renderGrid();
+        }
+
+        // Toggle View
         function toggleServiceView(v) {
             document.getElementById('selection-view').classList.toggle('section-hide', v === 'booking');
             document.getElementById('booking-view').classList.toggle('section-hide', v === 'selection');
-            window.scrollTo(0,0);
+            window.scrollTo(0, 0);
         }
 
+        // Language Toggle
         function toggleBookingLang() {
             isHindi = !isHindi;
             const btn = document.getElementById('lang-btn');
             btn.innerText = isHindi ? "English में देखें" : "हिन्दी में बदलें";
-            document.getElementById('f-name').placeholder = isHindi ? "आपका नाम" : "Full Name";
-            document.getElementById('f-phone').placeholder = isHindi ? "व्हाट्सएप नंबर" : "WhatsApp Number";
-            document.getElementById('f-address').placeholder = isHindi ? "हल्द्वानी का पूरा पता (लैंडमार्क सहित)" : "Haldwani Address (Landmark, Area)";
-            document.getElementById('f-submit').innerText = isHindi ? "बुकिंग तय करें" : "Confirm Booking";
+            
+            document.getElementById('f-name').placeholder = isHindi ? "आपका पूरा नाम" : "Enter your full name";
+            document.getElementById('f-phone').placeholder = isHindi ? "10-अंकीय व्हाट्सएप नंबर" : "10-digit mobile number";
+            document.getElementById('f-address').placeholder = isHindi ? "हल्द्वानी का पूरा पता (लैंडमार्क और एरिया सहित)" : "Full address in Haldwani (include landmark and area)";
+            document.getElementById('f-datetime').placeholder = isHindi ? "जैसे: कल सुबह 10 बजे या 15 दिसंबर 2024, 2 बजे" : "e.g., Tomorrow 10 AM or 15 Dec 2024, 2 PM";
+            document.getElementById('f-notes').placeholder = isHindi ? "कोई विशेष आवश्यकता या प्रश्न?" : "Any specific requirements or questions?";
+            document.getElementById('f-submit').innerHTML = isHindi ? "बुकिंग तय करें" : "Confirm Booking";
         }
 
-        setCategory('Electrician');
+        // Form Submissions
+        function handleBookingSubmit(event) {
+            const submitBtn = document.getElementById('f-submit');
+            const spinner = document.getElementById('submit-spinner');
+            
+            submitBtn.disabled = true;
+            spinner.classList.remove('hidden');
+            submitBtn.innerHTML = `<span>Submitting...</span><span id="submit-spinner" class="loading-spinner"></span>`;
+            
+            // Form will submit naturally, this just adds loading state
+            return true;
+        }
+
+        function handlePartnerSubmit(event) {
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const spinner = document.getElementById('partner-spinner');
+            
+            submitBtn.disabled = true;
+            spinner.classList.remove('hidden');
+            
+            return true;
+        }
+
+        // Update WhatsApp number (replace with actual number)
+        document.addEventListener('DOMContentLoaded', function() {
+            // You can update the WhatsApp link with actual number
+            const whatsappLink = document.querySelector('.whatsapp-float');
+            // whatsappLink.href = "https://wa.me/YOUR_ACTUAL_NUMBER?text=Hi%20EzeeClap!%20I%20need%20help%20with%20home%20services";
+        });
     </script>
 </body>
 </html>
